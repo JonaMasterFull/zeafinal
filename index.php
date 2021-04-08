@@ -2,7 +2,13 @@
     include_once 'templates/header.php';
 ?>
 
-<div><h1>Hola Mundo</h1></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class=""></div>
+        </div>
+    </div>
+</div>
 
 
 <?php 
