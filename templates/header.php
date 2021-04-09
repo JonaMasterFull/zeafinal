@@ -22,6 +22,8 @@
     
     <!-- Theme CSS -->
     <link id="theme-style" rel="stylesheet" href="assets/css/theme-1.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    
 </head> 
 <body>
 
@@ -39,11 +41,9 @@
                 </button>
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="nav-item"><a class="nav-link " href="#">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Preguntas Frecuentes</a></li>
-
-                        <li class="nav-item "><a class="nav-link btn-login" href="#" data-bs-toggle="modal" data-bs-target="#login-modal">Iniciar Session</a></li>
-                        <li class="nav-item nav-item-cta last"><a class="btn-signup" href="#" data-bs-toggle="modal" data-bs-target="#signup-modal">Sign Up</a></li>
+                        <li class="nav-item"><a class="nav-link " href="index.php">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link " href="respuestas.php">Respuestas</a></li>
+                        
                     </ul><!--//nav-->
                 </div><!--//navabr-collapse-->
             </nav><!--//main-nav-->                     
