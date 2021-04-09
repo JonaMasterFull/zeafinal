@@ -1,34 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<!-- Mirrored from themes.3rdwavemedia.com/startup-kit/bs5/1.2/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 09 Apr 2021 00:36:14 GMT -->
 <head>
-    <meta charset="UTF-8">
+    <title>TM Proyect</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/main.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-</head>
+    <meta name="description" content="">
+    <meta name="author" content="">    
+    <link rel="shortcut icon" href="favicon.ico">  
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,300italic,400italic,500italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+    <!-- FontAwesome JS -->
+    <script defer src="assets/fontawesome/js/all.js"></script>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">   
+    <!-- Plugins CSS -->    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="assets/css/theme-1.css">
+</head> 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">TM</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#">About</a>
-        </li>
-        
-      </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
-  </div>
-</nav>
+
+ <!-- ******HEADER****** --> 
+ <header id="header" class="header">  
+        <div class="container">      
+            <h1 class="logo">
+                <a href="index-2.html"><img src="assets/images/logo.svg" alt=""><span class="text">TM</span></a>
+            </h1><!--//logo-->
+            <nav class="main-nav navbar navbar-right navbar-expand-md">     
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-collapse">
+                    <span> </span>
+                    <span> </span>
+                    <span> </span>
+                </button>
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="nav-item"><a class="nav-link " href="#">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Preguntas Frecuentes</a></li>
+
+                        <li class="nav-item "><a class="nav-link btn-login" href="#" data-bs-toggle="modal" data-bs-target="#login-modal">Iniciar Session</a></li>
+                        <li class="nav-item nav-item-cta last"><a class="btn-signup" href="#" data-bs-toggle="modal" data-bs-target="#signup-modal">Sign Up</a></li>
+                    </ul><!--//nav-->
+                </div><!--//navabr-collapse-->
+            </nav><!--//main-nav-->                     
+        </div><!--//container-->
+    </header><!--//header-->      
+    
