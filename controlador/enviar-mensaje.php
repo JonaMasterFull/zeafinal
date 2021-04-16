@@ -10,8 +10,9 @@ if(isset($_POST['btn-enviar'])){
         // Datos para el correo
         $destinatario = "jonytello76@gmail.com";
         $asunto = "Pregunta de Cliente";
+        $MensajeCompleto = $Mensajes . "\nAtentamente: " . $Email;
         $header = "El mensaje se ha recibido con exito" . "\r\n";
-        $header.= "Inicio session en el Administrador de la Pagina";
+        $header.= "Inicio session en el Administrador de la Pagina" . phpversion();
 
         try{
             
@@ -21,12 +22,12 @@ if(isset($_POST['btn-enviar'])){
             $ejecutar = mysqli_query($conectar,$sql);
 
             if(!$ejecutar){
-                mail($destinatario, $asunto, $Mensajes, $header);
+                mail($destinatario, $asunto, $MensajeCompleto, $header);
                 header("Location: ../mensaje-enviado.php");
 
             }else{
                
-                mail($destinatario, $asunto, $Mensajes, $header);
+                mail($destinatario, $asunto, $MensajeCompleto, $header);
                 if($mail){
                     header("Location: ../mensaje-enviado.php");
                 }else{
