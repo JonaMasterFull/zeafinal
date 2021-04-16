@@ -956,6 +956,8 @@ class PHPMailer
      */
     public function isSMTP()
     {
+        var_dump("22222222222222222");
+        die();
         $this->Mailer = 'smtp';
     }
 
