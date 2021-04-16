@@ -72,8 +72,9 @@
             <br>
             <br>
                 <div class="card">
-            <?php  
-                    $sql = "SELECT id_pregunta,preguntas.Nombre,proyectos.Nombre as Proyecto FROM preguntas INNER JOIN proyectos on preguntas.id_proyecto = proyectos.id_proyecto WHERE proyectos.Nombre = 'DiRZOO'";
+                <?php  
+                    
+                    $sql = "SELECT id_pregunta,preguntas.Nombre,proyectos.Nombre as Proyecto FROM preguntas INNER JOIN proyectos on preguntas.id_proyecto = proyectos.id_proyecto WHERE proyectos.Nombre = 'Zea'";
                     $result = mysqli_query($conectar,$sql);
                     while ($mostrar=mysqli_fetch_array($result)) { ?>            
                 <div class="card-header">
@@ -85,16 +86,16 @@
                             * Mandanos tus dudas o sugerencias
                     </label>
                     <br>
-                    <form action="" class="form-group">
-                    <input type="hidden" name="id" value="<?php echo $mostrar['id_pregunta'] ?>">
-                    <label for="exampleFormControlInput1" class="form-label">Ingresa tu correo Electronico</label>
-                    <input type="email" class="form-control" name="Proyecto" placeholder="name@example.com">
-                    <br>
-                    <label class="form-label">Escribe tus dudas o sugeriencias</label>
-                    <textarea class="form-control" rows="5" name="mensaje"></textarea>
-                    <br>
-                    <a class="btn btn-primary col-12" name="btn-enviar">Enviar</a>
-                </form>
+                    <form class="form-group" action="controlador/enviar-mensaje.php" method="post">
+                        <input type="hidden" name="idmensaje" value="<?php echo $mostrar['id_pregunta'] ?>">
+                        <label for="exampleFormControlInput1" class="form-label">Ingresa tu correo Electronico</label>
+                        <input type="email" class="form-control" name="email" placeholder="name@example.com">
+                        <br>
+                        <label class="form-label">Escribe tus dudas o sugeriencias</label>
+                        <textarea class="form-control" rows="5" name="mensaje"></textarea>
+                        <br>
+                        <button class="btn btn-primary col-12" name="btn-enviar">Enviar</button>
+                    </form>
                 <?php } ?>
             </div>
         </div><!--//section-intro-->
