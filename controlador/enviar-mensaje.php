@@ -24,8 +24,6 @@ if(isset($_POST['btn-enviar'])){
 
                 mail($destinatario, $asunto, $MensajeCompleto, $cabeceras);                    
                 header("Location: ../mensaje-enviado.php");
-
-
         }catch(Exception $e){
             echo "Error: " . $e -> getMessage();
         }
