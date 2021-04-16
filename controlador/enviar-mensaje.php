@@ -19,22 +19,17 @@ if(isset($_POST['btn-enviar'])){
             require_once '../database/conexion.php';
             $sql = "INSERT INTO mensaje VALUES (Null,'$Email','$Mensajes','$id')";
 
-            $ejecutar = mysqli_query($conectar,$sql);
+            
 
-            if(!$ejecutar){
-                mail($destinatario, $asunto, $MensajeCompleto, $header);
-                header("Location: ../mensaje-enviado.php");
-
-            }else{
-               
                 mail($destinatario, $asunto, $MensajeCompleto, $header);
                 if($mail){
+                    $ejecutar = mysqli_query($conectar,$sql);
                     header("Location: ../mensaje-enviado.php");
                 }else{
                     header("Location: ../index.php");
                 }
                 
-            }
+
         }catch(Exception $e){
             echo "Error: " . $e -> getMessage();
         }
