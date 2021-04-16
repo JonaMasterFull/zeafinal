@@ -3,12 +3,12 @@ include("../PHPMailer/src/PHPMailer.php");
 
 
 if(isset($_POST['btn-enviar'])){
-    var_dump("1111111111111111111");
-    die();
+   
         try{
             $mail = new PHPMailer\PHPMailer\PHPMailer();
             $mail->isSMTP();
-
+            var_dump("1111111111111111111");
+            die();
             $mail->SMTPDebug = 0;
             $mail->Host = $this->_host;
             $mail->Port = $this->_port;
