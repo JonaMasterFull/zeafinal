@@ -1,10 +1,10 @@
 <?php 
 include("../PHPMailer/src/PHPMailer.php");
 
-var_dump("1111111111111111111");
-die();
-if(isset($_POST['btn-enviar'])){
 
+if(isset($_POST['btn-enviar'])){
+    var_dump("1111111111111111111");
+    die();
         try{
             $mail = new PHPMailer\PHPMailer\PHPMailer();
             $mail->isSMTP();
