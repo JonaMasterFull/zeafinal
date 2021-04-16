@@ -14,9 +14,10 @@ if(isset($_POST['btn-enviar'])){
             $subject = "Pregunta Recibida";
             
     
-            /* Datos para el correo
+             //Datos para el correo
             $FromEmail = "jonytello76@gmail.com";//Correo Integrado para mandar correos
             $FromName = "Jonathan Aldair";
+            /*
             $host = "smtp.live.com";
             $port = "587";
             $SMTPAuth = "login";
