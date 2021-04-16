@@ -73,7 +73,7 @@
             <div class="card">
             <?php  
         
-                $sql = "SELECT id_pregunta,preguntas.Nombre,proyectos.Nombre as Proyecto FROM preguntas INNER JOIN proyectos on preguntas.id_proyecto = proyectos.id_proyecto WHERE proyectos.Nombre = 'Zea'";
+                $sql = "SELECT id_pregunta,preguntas.Nombre,proyectos.Nombre as Proyecto FROM preguntas INNER JOIN proyectos on preguntas.id_proyecto = proyectos.id_proyecto WHERE proyectos.Nombre = 'NOVAM'";
                 $result = mysqli_query($conectar,$sql);
                 while ($mostrar=mysqli_fetch_array($result)) { ?>            
             <div class="card-header">
