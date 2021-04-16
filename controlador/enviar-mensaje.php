@@ -16,10 +16,8 @@ if(isset($_POST['btn-enviar'])){
             $FromEmail = "valverdefrancisco907@gmail.com". ",";
             $FromEmail.= "perezaguirre414@gmail.com";
 
-
-
             mail($FromEmail, $título, $Mensajes);
-                if(!mail){
+                if(!mail()){
 
                     header("Location: ../index.php");
                 }else{
