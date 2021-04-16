@@ -3,16 +3,19 @@
     include_once 'templates/nav.php';
     include_once 'templates/menu.php';
     include_once '../database/conexion.php';
-    if(isset($_GET['id']) && isset($_GET['isres'])){
-      $id =  $_GET['id'];
-      $sql = "SELECT * FROM mensaje Inner Join respuesta on mensaje.id_mensaje = respuesta.id_mensaje WHERE id_mensaje = '$id' AND id_mensaje = '$isres'";
+    if(isset($_GET['id']) && isset($_GET['idres'])){
+      $idmensaje =  $_GET['id'];
+      $idrespueta =  $_GET['idres'];
+      $sql = "SELECT mensaje.id_mensaje,respuesta.id_respuesta,respuesta.Estado,respuesta.Mensaje FROM mensaje Inner Join respuesta 
+      on mensaje.id_mensaje = respuesta.id_mensaje Where mensaje.id_mensaje = '$idmensaje' AND respuesta.id_respuesta = '$idrespueta'";
       $query = mysqli_query($conectar,$sql);
       if(mysqli_num_rows($query) == 1){
           $row = mysqli_fetch_array($query);
-          $Id = $row['id_mensaje'];
+          $Idmensaje = $row['id_mensaje'];
+          $Idrespuestas = $row['id_respuesta'];
           $Respuesta = $row['Mensaje'];
+          $Estado = $row['Estado'];
       }
-
   }
 ?>
 
@@ -91,8 +94,8 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-              <form action="controlador/insertar-respuesta.php" method="post">
-                <input type="hidden" name="enviar" value="<?php echo $Id;?>">
+              <form action="controlador/editar-respuesta.php" method="post">
+                <input type="hidden" name="mensaje" value="<?php echo $Idmensaje;?>">
                 <div class="form-group">
                   <select class="form-control" name="status">
                   <option value="0">Selecciona el estado de esta respuesta</option>
@@ -101,12 +104,12 @@
                   $result = mysqli_query($conectar,$sql);
                   while ($mostrar=mysqli_fetch_array($result)) {
                   ?>
-                    <option value="<?php echo $mostrar['id'] ?>" <?php if($mostrar['id'] == $Id): ?>selected<?php endif;?>><?php echo $mostrar['Nombre'] ?></option>
+                    <option value="<?php echo $mostrar['id'] ?>" <?php if($mostrar['id'] == $Estado): ?>selected<?php endif;?>><?php echo $mostrar['Nombre'] ?></option>
                     <?php } ?>
                  </select>
                 </div>
                 <div class="form-group">
-                    <textarea id="compose-textarea" class="form-control" name="respuesta" style="height: 300px"></textarea>
+                    <textarea id="compose-textarea" class="form-control" name="respuesta" style="height: 300px"><?php echo $Respuesta; ?></textarea>
                 </div>
                 <div class="float-right">
                   <button type="submit" class="btn btn-primary" name="btn-enviar"><i class="far fa-envelope"></i> Enviar</button>

@@ -1,57 +1,65 @@
 <?php 
-include("../PHPMailer/src/PHPMailer.php");
-include("../PHPMailer/src/SMTP.php");
-include("../PHPMailer/src/Exception.php");
-require_once '../database/conexion.php';
+require "../PHPMailer/src/PHPMailer.php";
+require "../PHPMailer/src/SMTP.php";
+require "../PHPMailer/src/Exception.php";
+include '../database/conexion.php';
 
 if(isset($_POST['btn-enviar'])){
    
         try{
-
-            $id = $_POST['id'];
+            $id = $_POST['idmensaje'];
             $Email = $_POST['email'];
             $Mensajes = $_POST['mensaje'];
-            $subject = "Pregunta Recibida";
 
-                //Crear una instancia de PHPMailer
-                $mail = new PHPMailer\PHPMailer\PHPMailer();
-                //Definir que vamos a usar SMTP
-                $mail->IsSMTP();
-                //Esto es para activar el modo depuración. En entorno de pruebas lo mejor es 2, en producción siempre 0
-                // 0 = off (producción)
-                // 1 = client messages
-                // 2 = client and server messages
-                $mail->SMTPDebug  = 1;
-                //Ahora definimos gmail como servidor que aloja nuestro SMTP
-                $mail->Host       = 'smtp.gmail.com';
-                //El puerto será el 587 ya que usamos encriptación TLS
-                $mail->Port       = 587;
-                //Definmos la seguridad como TLS
-                $mail->SMTPSecure = 'tls';
-                //Tenemos que usar gmail autenticados, así que esto a TRUE
-                $mail->SMTPAuth   = true;
-                //Definimos la cuenta que vamos a usar. Dirección completa de la misma
-                $mail->Username   = "Jonathan.Perez@thinkingMachinecenter";
-                //Introducimos nuestra contraseña de gmail
-                $mail->Password   = "56899Jona2010";
-                //Definimos el remitente (dirección y, opcionalmente, nombre)
-                $mail->SetFrom('jonytello76@gmail.com', 'Mi nombre');
-                //Esta línea es por si queréis enviar copia a alguien (dirección y, opcionalmente, nombre)
-                $mail->AddReplyTo('perezaguirre414@gmail.com','El de la réplica');
-                //Y, ahora sí, definimos el destinatario (dirección y, opcionalmente, nombre)
-                $mail->AddAddress('jonytello76@gmail.com', 'El Destinatario');
-                //Definimos el tema del email
-                $mail->Subject = 'Esto es un correo de prueba';
-                //Para enviar un correo formateado en HTML lo cargamos con la siguiente función. Si no, puedes meterle directamente una cadena de texto.
-               
-                //Y por si nos bloquean el contenido HTML (algunos correos lo hacen por seguridad) una versión alternativa en texto plano (también será válida para lectores de pantalla)
-                $mail->AltBody = $Mensajes;
-                //Enviamos el correo
-                if(!$mail->Send()) {
-                echo "Error: " . $mail->ErrorInfo;
+            $ContenidoMensaje = "Mensaje Nuevo de : ". $Email . "\r\n";
+            $ContenidoMensaje.= "El mensaje Recibido es: " . $Mensajes . "\r\n";
+            $ContenidoMensaje.= "¡Ingrese al Administrador para Responder!";
+
+            $mail­ = new PHPMailer\PHPMailer\PHPMailer();
+
+            $mail­->isSMTP();
+           
+            $mail­->SMTPDebug = 0;
+
+            $mail­->SMTPAuth = true;
+            $mail­->SMTPSecure = "ssl";
+            $mail­->Host = "smtp.gmail.com";
+            $mail­->Port = 465;
+
+
+            $mail­->Username = "pnuevas466@gmail.com";
+            $mail­->Password = "TM2021AB";
+            $mail­->SetFrom('pnuevas466@gmail.com', 'Jonathan');
+            $mail­->AddReplyTo("Jonathan.Perez@thinkingmachinecenter.com","Francisco");
+            $mail­->Subject = "Mensaje Prueba";
+            $mail­->MsgHTML($ContenidoMensaje);
+
+            $address = "pnuevas466@gmail.com";//Correo A enviar
+
+
+            $mail­->AddAddress($address, "Mensaje Prueba");
+             
+
+            if(!$mail­->send()) {
+                echo "Error al enviar: " . $mail­->ErrorInfo;
                 } else {
-                echo "Enviado!";
+                echo "Mensaje enviado!";
                 }
+                echo "Correo Enviado";
+
+                $sql = "INSERT INTO mensaje VALUES (Null,'$Email','$Mensajes','$id')";
+                $ejecutar = mysqli_query($conectar,$sql);
+                if(!$ejecutar){
+                    header("Location: ../index.php");
+                }else{
+                    header("Location: ../mensaje-enviado.php");
+                }
+                
+              
+            
+                
+
+        
         }catch(Exception $e){
             echo "Error: " . $e -> getMessage();
         }

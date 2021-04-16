@@ -87,7 +87,7 @@
                 </label>
                 <br>
                 <form class="form-group" action="controlador/enviar-mensaje.php" method="post">
-                    <input type="hidden" name="id" value="<?php echo $mostrar['id_pregunta'] ?>">
+                    <input type="hidden" name="idmensaje" value="<?php echo $mostrar['id_pregunta'] ?>">
                     <label for="exampleFormControlInput1" class="form-label">Ingresa tu correo Electronico</label>
                     <input type="email" class="form-control" name="email" placeholder="name@example.com">
                     <br>

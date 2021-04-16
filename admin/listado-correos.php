@@ -43,7 +43,7 @@
                   <a href="listado-correos.php" class="nav-link">
                     <i class="fas fa-inbox"></i> Inbox
                     <?php 
-                $sql="SELECT Count(Estado) as TOTAL FROM respuesta Where Estado = 2";
+                $sql="SELECT Count(Estado) as TOTAL FROM respuesta Where Estado = Null";
                 $result = mysqli_query($conectar,$sql);
                 while ($mostrar=mysqli_fetch_array($result)) {
                 ?>
@@ -55,7 +55,7 @@
                   <a href="listado-correos-enviados.php" class="nav-link">
                     <i class="far fa-envelope"></i> Enviados
                     <?php 
-                $sql="SELECT Count(Estado) as TOTAL FROM respuesta Where Estado = 2";
+                $sql="SELECT Count(Estado) as TOTAL FROM respuesta Where Estado = 1";
                 $result = mysqli_query($conectar,$sql);
                 while ($mostrar=mysqli_fetch_array($result)) {
                 ?>
@@ -109,7 +109,11 @@
                     <td class="mailbox-name"><?php echo $mostrar['Mensaje'] ?></td>
                     
                     <td>
-                    <a href="editar-respuesta.php?id=<?php echo $mostrar['id_mensaje']; ?>?isres=<?php echo $mostrar['id_respuesta']; ?>" class="btn btn-warning mr-2"><i class="fas fa-pen"></i></a>
+                    <?php
+                    if($Contestado == 1){
+                    ?>
+                    <a href="editar-respuesta.php?id=<?php echo $mostrar['id_mensaje']; ?>&idres=<?php echo $mostrar['id_respuesta']; ?>" class="btn btn-warning mr-2"><i class="fas fa-pen"></i></a>
+                    <?php }?>
                     <a href="controlador/eliminar-correo.php?id=<?php echo $mostrar['id_mensaje']; ?>" class="btn btn-danger mr-2"><i class="fas fa-eraser"></i></a>
                     
                     </td>

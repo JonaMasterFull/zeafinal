@@ -29,7 +29,7 @@
         
         <section class="mt-5 mb-5">
             <h1>SU MENSAJE SE ENVIÓ EXITOSAMENTE</h1>
-            <a href="index.">Regresar a Inicio</a>
+            <a href="index.php">Regresar a Inicio</a>
         </section>
 
     </section>
