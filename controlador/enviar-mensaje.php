@@ -11,8 +11,9 @@ if(isset($_POST['btn-enviar'])){
         $destinatario = "perezaguirre414@gmail.com";
         $asunto = "Pregunta de Cliente";
         $MensajeCompleto = $Mensajes . "\nAtentamente: " . $Email;
-        $header = "El mensaje se ha recibido con exito" . "\r\n";
-        $header.= "Inicio session en el Administrador de la Pagina" . phpversion();
+        $cabeceras = 'From: '. $Email . "\r\n" .
+        'Reply-To: webmaster@example.com' . "\r\n" .
+        'X-Mailer: PHP/' . phpversion();
 
         try{
             
@@ -21,10 +22,9 @@ if(isset($_POST['btn-enviar'])){
 
             $ejecutar = mysqli_query($conectar,$sql);
 
-                mail($destinatario, $asunto, $MensajeCompleto, $header);                    
+                mail($destinatario, $asunto, $MensajeCompleto, $cabeceras);                    
                 header("Location: ../mensaje-enviado.php");
-               
-                
+
 
         }catch(Exception $e){
             echo "Error: " . $e -> getMessage();
