@@ -20,24 +20,10 @@
 
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
+
   <script type="text/javascript">
-  $("#summernote").summernote({
-    placeholder: "Escribe la Descripcion del Blog",
-    tabsize: 2,
-    height: 120,
-    toolbar: [
-      ["style", ["style"]],
-      ["font", ["bold", "underline", "clear", "fontname", "fontsize"]],
-      ["height", ["height"]],
-      ["color", ["color"]],
-      ["para", ["ul", "ol", "paragraph"]],
-      ["table", ["table"]],
-      ["insert", ["link", "video"]],
-      ["view", ["fullscreen", "codeview", "help"]],
-    ],
-  });
-  $("#summernote2").summernote({
-    placeholder: "Escribe la Descripcion de Detalle",
+  $("#compose-textarea").summernote({
+    placeholder: "Escribe el Mensaje a responder...",
     tabsize: 2,
     height: 120,
     toolbar: [
@@ -49,6 +35,7 @@
       ["view", ["fullscreen", "codeview", "help"]],
     ],
   });
+
   </script>
 
 </body>

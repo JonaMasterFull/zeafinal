@@ -19,6 +19,8 @@ h6 {
 p {
   margin-bottom: 15px;
   line-height: 1.5;
+  color:rgba(0, 0, 0, 0.8);
+  text-decoration: none;
 }
 a {
   color: #159bc0;
@@ -570,7 +572,7 @@ textarea {
   border: none;
   text-transform: none;
   min-width: 200px;
-  background: rgba(53, 55, 60, 0.8);
+  background: rgba(53, 55, 60, 0.5);
 }
 .main-nav .nav .dropdown-menu a {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -744,6 +746,7 @@ textarea {
 .promo-section .tagline {
   font-size: 18px;
   margin-bottom: 30px;
+  color: white;
 }
 .promo-section .actions .btn {
   margin-right: 30px;
@@ -1382,7 +1385,7 @@ textarea {
   margin-bottom: 30px;
 }
 .quote-item .inner {
-  background: #f5f5f5;
+  background: #b8b8b8;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;
@@ -1411,6 +1414,7 @@ textarea {
   border-left: none;
   margin: 0;
   padding: 0;
+  color: white;
 }
 .quote-item .source {
   font-size: 14px;

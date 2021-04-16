@@ -51,110 +51,87 @@
           <!--Noticia-->
           <li class="nav-item">
               <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-newspaper"></i>
+              <i class="nav-icon fas fa-mail-bulk"></i>
                 <p>
-                  Blogs
+                  TM
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
                         <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-mortar-pestle"></i>
-                          <p>Culinarias</p>
+                        <i class="nav-icon fas fa-folder-open"></i>
+                          <p>Proyectos</p>
                           <i class="right fas fa-angle-left"></i>
                         </a>
                         <ul class="nav nav-treeview">
                           <li class="nav-item">
-                            <a href="listado-culinarias.php" class="nav-link">
+                            <a href="listado-proyectos.php" class="nav-link">
                               <i class="far fas fa-eye nav-icon"></i>
 
-                              <p>Ver Listado</p>
+                              <p>Ver Proyectos</p>
                             </a>
                           </li>
                           <li class="nav-item">
-                            <a href="crear-culinarias.php" class="nav-link">
+                            <a href="crear-proyectos.php" class="nav-link">
                               <i class="far fas fa-plus-circle nav-icon"></i>
-                              <p>Agregar Blogs</p>
+                              <p>Agregar Proyecto</p>
                             </a>
                           </li>
-                          <li class="nav-item">
-                            <a href="listado-culinarias-blog.php" class="nav-link">
-                              <i class="far fas fa-eye nav-icon"></i>
-
-                              <p>Listado Tags</p>
-                            </a>
-                          </li>
+                         
                         </ul>
                 </li><!--End Culinarias-->
                 <li class="nav-item"><!--Mexicana-->
                       <a href="#" class="nav-link">
-                      <i class="nav-icon fas fa-globe-americas"></i>
+                      <i class="nav-icon fas fa-question-circle"></i>
 
-                        <p>Internacional</p>
+                        <p>Preguntas</p>
                         <i class="right fas fa-angle-left"></i>
                       </a>
                     <ul class="nav nav-treeview">
                       <li class="nav-item">
-                        <a href="listado-internacional.php" class="nav-link">
+                        <a href="listado-preguntas.php" class="nav-link">
                           <i class="far fas fa-eye nav-icon"></i>
 
-                          <p>Ver Noticias</p>
+                          <p>Ver Preguntas</p>
                         </a>
                       </li>
                       <li class="nav-item">
-                        <a href="crear-internacional.php" class="nav-link">
+                        <a href="crear-preguntas.php" class="nav-link">
                           <i class="far fas fa-plus-circle nav-icon"></i>
-                          <p>Agregar Blogs</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="listado-internacional-blog.php" class="nav-link">
-                          <i class="far fas fa-eye nav-icon"></i>
-
-                          <p>Listado Tags</p>
-                        </a>
-                      </li>
-                    </ul>
-                 </li>
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-pepper-hot"></i>
-
-                      <p>Mexicana</p>
-                      <i class="right fas fa-angle-left"></i>
-                    </a>
-                    <ul class="nav nav-treeview">
-                      <li class="nav-item">
-                        <a href="listado-mexicana.php" class="nav-link">
-                          <i class="far fas fa-eye nav-icon"></i>
-
-                          <p>Ver Noticias</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="crear-mexicana.php" class="nav-link">
-                          <i class="far fas fa-plus-circle nav-icon"></i>
-                          <p>Agregar Blogs</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="listado-mexicana-blog.php" class="nav-link">
-                          <i class="far fas fa-eye nav-icon"></i>
-
-                          <p>Listado Tags</p>
+                          <p>Agregar Preguntas</p>
                         </a>
                       </li>
                     </ul>
                  </li>
             </ul>
           </li>
-          
+          <!--End TM-->
+
+           <!--Respuesatas-->
+           <li class="nav-item">
+            <a class="nav-link">
+              <i class="nav-icon fas fa-inbox"></i>
+              <p>
+                Correo
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+
+              <li class="nav-item">
+                <a href="listado-correos.php" class="nav-link">
+                  <i class="far fa-eye nav-icon"></i>
+                  <p>Ver Correos</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <!--End Correos-->
           <!--Administracion-->
           <li class="nav-item">
             <a class="nav-link">
-              <i class="nav-icon fas fa-table"></i>
+              <i class="nav-icon fas fa-user-lock"></i>
               <p>
                 Administracion
                 <i class="fas fa-angle-left right"></i>

@@ -31,7 +31,7 @@
  <header id="header" class="header">  
         <div class="container">      
             <h1 class="logo">
-                <a href="index-2.html"><img src="assets/images/logo.svg" alt=""><span class="text">TM</span></a>
+                <a href="index.php"><img src="assets/images/logo.svg" alt=""><span class="text">TM</span></a>
             </h1><!--//logo-->
             <nav class="main-nav navbar navbar-right navbar-expand-md">     
                 <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-collapse">

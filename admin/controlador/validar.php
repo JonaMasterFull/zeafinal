@@ -2,7 +2,7 @@
    
     $error = '';
     if(isset($_POST['submit'])){
-        if(empty($_POST['usuario']) || empty($_POST['password'])){
+        if(empty($_POST['usuario']) && empty($_POST['password'])){
             $error = "No tiene datos";
         }else{
             // Define $username y $password
@@ -13,7 +13,7 @@
             
 
             require_once '../database/conexion.php';
-            $sql = "SELECT NombreCompleto,Usuario FROM users WHERE Usuario = '$User' AND Pass = '$Pass';";
+            $sql = "SELECT NombreCompleto,Usuario,Pass FROM users WHERE Usuario = '$User' AND Pass = '$Pass';";
             $query=mysqli_query($conectar,$sql);
             $valor = mysqli_fetch_assoc($query);
             $Filas=mysqli_num_rows($query);
@@ -22,7 +22,7 @@
                     header("location: admin-area.php"); 
                     $_SESSION['Nombre'] = $valor['NombreCompleto'];
             } else {
-                $error = "El correo electrónico o la contraseña es inválida.";	
+                $error = "El correo electrónico o la contraseña es inválida.";
             }
             mysqli_free_result($query);
             mysqli_close($conectar);
