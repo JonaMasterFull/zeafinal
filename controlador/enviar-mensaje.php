@@ -5,11 +5,10 @@ require_once '../database/conexion.php';
 if(isset($_POST['btn-enviar'])){
    
         try{
-
             $id = $_POST['id'];
             $Email = $_POST['email'];
             $Mensajes = $_POST['mensaje'];
-            $título = 'Recordatorio de cumpleaños para Agosto';
+            $título = 'Respuesta Enviada';
             
     
              //Datos para el correo

@@ -3,7 +3,6 @@
     include_once 'templates/nav.php';
     include_once 'templates/menu.php';
     include_once '../database/conexion.php';
-    
 ?>
 
 
@@ -69,10 +68,21 @@
               <div class="table-responsive mailbox-messages">
 
                 <table class="table table-hover table-striped">
+                <?php 
+                $sql="SELECT * FROM users";
+                $result = mysqli_query($conectar,$sql);
+                while ($mostrar=mysqli_fetch_array($result)) {
+                ?>
                   <tbody>
                   <tr>
+                  <?php 
+                    if($mostrar['Estado'] == Contestado){
+                      ?>
+                      <td><span class="badge bg-success">Contestado</span></td>
+                    <?php }else{
+                   ?>          
                   <td><span class="badge bg-danger">No contestado</span></td>
-                  <td><span class="badge bg-success">Contestado</span></td>
+                  <?php  } ?>
 
 
                     <td class="mailbox-name"><a href="ver-mensaje.php">Correo De</a></td>
@@ -85,7 +95,9 @@
                     <a href="responder-mensaje.php" class="btn btn-primary"><i class="fas fa-paper-plane mr-2"></i>Responder</a>
                     </td>
                   </tr>
-                  
+                  <?php
+                }
+                  ?>
                   
                   </tbody>
                 </table>
