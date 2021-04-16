@@ -3,16 +3,17 @@
     include_once 'templates/nav.php';
     include_once 'templates/menu.php';
     include_once '../database/conexion.php';
-    if(isset($_GET['id'])){
+    if(isset($_GET['id']) && isset($_GET['isres'])){
       $id =  $_GET['id'];
-      $sql = "SELECT * FROM mensaje WHERE id_mensaje = '$id'";
+      $sql = "SELECT * FROM mensaje Inner Join respuesta on mensaje.id_mensaje = respuesta.id_mensaje WHERE id_mensaje = '$id' AND id_mensaje = '$isres'";
       $query = mysqli_query($conectar,$sql);
       if(mysqli_num_rows($query) == 1){
           $row = mysqli_fetch_array($query);
           $Id = $row['id_mensaje'];
+          $Respuesta = $row['Mensaje'];
       }
-  }
 
+  }
 ?>
 
 
@@ -86,7 +87,7 @@
           <div class="col-md-9">
             <div class="card card-primary card-outline">
               <div class="card-header">
-                <h3 class="card-title">Responder Nuevo Mensaje</h3>
+                <h3 class="card-title">Editar Respuesta</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -100,7 +101,7 @@
                   $result = mysqli_query($conectar,$sql);
                   while ($mostrar=mysqli_fetch_array($result)) {
                   ?>
-                    <option value="<?php echo $mostrar['id'] ?>" ><?php echo $mostrar['Nombre'] ?></option>
+                    <option value="<?php echo $mostrar['id'] ?>" <?php if($mostrar['id'] == $Id): ?>selected<?php endif;?>><?php echo $mostrar['Nombre'] ?></option>
                     <?php } ?>
                  </select>
                 </div>

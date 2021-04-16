@@ -1,17 +1,17 @@
 <?php
 
-
+/*
 $servername = "us-cdbr-east-03.cleardb.com";//Nombre del Servidor
 $username = "bd12d4f4abf1db";//Nombre de Usuario
 $password = "fefa0201";//Contraseña de Servidor de base de datos
 $dbname = "heroku_c5ea7baf63fa185";//Nombre de Base de datos
+*/
 
-/*
 $servername = "localhost";//Nombre del Servidor
 $username = "root";//Nombre de Usuario
 $password = "";//Contraseña de Servidor de base de datos
 $dbname = "tmprueba";//Nombre de Base de datos
-*/
+
 $conectar = mysqli_connect($servername, $username, $password,$dbname);//Conexion
 
 if(!$conectar){

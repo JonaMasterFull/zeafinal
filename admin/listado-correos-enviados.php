@@ -42,12 +42,25 @@
                 <li class="nav-item active">
                   <a href="listado-correos.php" class="nav-link">
                     <i class="fas fa-inbox"></i> Inbox
-                    <span class="badge bg-primary float-right">12</span>
+                    <?php 
+                $sql="SELECT Count(Estado) as TOTAL FROM respuesta Where Estado = 'No contestado';";
+                $result = mysqli_query($conectar,$sql);
+                while ($mostrar=mysqli_fetch_array($result)) {
+                ?>
+                    <span class="badge bg-danger float-right"><?php echo $mostrar['TOTAL']; ?></span>
+                <?php }?>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="listado-correos-enviados.php" class="nav-link">
-                    <i class="far fa-envelope"></i> Sent
+                    <i class="far fa-envelope"></i> Enviados
+                    <?php 
+                $sql="SELECT Count(Estado) as TOTAL FROM respuesta Where Estado = 'Contestado';";
+                $result = mysqli_query($conectar,$sql);
+                while ($mostrar=mysqli_fetch_array($result)) {
+                ?>
+                    <span class="badge bg-primary float-right"><?php echo $mostrar['TOTAL']; ?></span>
+                <?php }?>
                   </a>
                 </li>
               </ul>
@@ -67,25 +80,37 @@
               
               <div class="table-responsive mailbox-messages">
                 <table class="table table-hover table-striped">
+                <?php 
+                    $sql="SELECT mensaje.id_mensaje,mensaje.Email,mensaje.Mensaje as recibido,respuesta.id_respuesta,respuesta.Mensaje,respuesta.Estado FROM mensaje LEFT jOIN respuesta on mensaje.id_mensaje = respuesta.id_mensaje where respuesta.Estado = 1";
+                    $result = mysqli_query($conectar,$sql);
+                    while ($mostrar=mysqli_fetch_array($result)) {
+                      $id = $mostrar['id_mensaje'];
+                      $Contestado = $mostrar['Estado'];
+                    ?>
                   <tbody>
                   <tr>
-                  <td><span class="badge bg-danger">No contestado</span></td>
+                  <?php 
+
+                  if($Contestado == 1){
+                  ?>
                   <td><span class="badge bg-success">Contestado</span></td>
+                  <?php
+                  }
+                 ?>
 
-
-                    <td class="mailbox-name"><a href="read-mail.html">Correo De</a></td>
-                    <td class="mailbox-subject"><b>Asunto</b> Mensaje
-                    <td class="mailbox-subject"><b></b>
-                    </td>
+                    <td><?php echo $mostrar['Email'] ?></td>
+                    <td class="mailbox-name"><a href="ver-mensaje.php?id=<?php echo $mostrar['id_mensaje']; ?>"><?php echo $mostrar['Mensaje'] ?></a></td>
+                    
                     <td>
-                    <a href="editar-admin.php?id=<?php echo $mostrar['id_users']; ?>" class="btn btn-warning mr-2"><i class="fas fa-pen"></i></a>
-                    <a href="controlador/eliminar-admin.php?id=<?php echo $mostrar['id_users']; ?>" class="btn btn-danger mr-2"><i class="fas fa-eraser"></i></a>
-                    <a href="controlador/eliminar-admin.php?id=<?php echo $mostrar['id_users']; ?>" class="btn btn-primary"><i class="fas fa-paper-plane mr-2"></i>Responder</a>
+                    <a href="editar-respuesta.php?id=<?php echo $mostrar['id_mensaje']; ?>" class="btn btn-warning mr-2"><i class="fas fa-pen"></i></a>
+                    <a href="controlador/eliminar-correo.php?id=<?php echo $mostrar['id_mensaje']; ?>" class="btn btn-danger mr-2"><i class="fas fa-eraser"></i></a>
+                    
                     </td>
                   </tr>
                   
                   
                   </tbody>
+                  <?php } ?>
                 </table>
                 <!-- /.table -->
               </div>

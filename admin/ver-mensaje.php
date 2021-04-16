@@ -4,6 +4,19 @@
     include_once 'templates/menu.php';
     include_once '../database/conexion.php';
     
+
+    
+    if(isset($_GET['id'])){
+      $id =  $_GET['id'];
+      $sql = "SELECT * FROM mensaje WHERE id_mensaje = '$id'";
+      $query = mysqli_query($conectar,$sql);
+      if(mysqli_num_rows($query) == 1){
+          $row = mysqli_fetch_array($query);
+          $Email = $row['Email'];
+          $Mensaje = $row['Mensaje'];
+          $Pregunta = $row['id_pregunta'];
+      }
+  }
 ?>
 
 
@@ -44,17 +57,29 @@
                 <li class="nav-item active">
                   <a href="listado-correos.php" class="nav-link">
                     <i class="fas fa-inbox"></i> Inbox
-                    <span class="badge bg-danger float-right">12</span>
+                    <?php 
+                $sql="SELECT Count(Estado) as TOTAL FROM respuesta Where Estado = 'No contestado';";
+                $result = mysqli_query($conectar,$sql);
+                while ($mostrar=mysqli_fetch_array($result)) {
+                ?>
+                    <span class="badge bg-danger float-right"><?php echo $mostrar['TOTAL']; ?></span>
+                <?php }?>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="listado-correos-enviados.php" class="nav-link">
-                    <i class="far fa-envelope"></i> Sent
-                    <span class="badge bg-primary float-right">12</span>
+                    <i class="far fa-envelope"></i> Enviados
+                    <?php 
+                $sql="SELECT Count(Estado) as TOTAL FROM respuesta Where Estado = 'Contestado';";
+                $result = mysqli_query($conectar,$sql);
+                while ($mostrar=mysqli_fetch_array($result)) {
+                ?>
+                    <span class="badge bg-primary float-right"><?php echo $mostrar['TOTAL']; ?></span>
+                <?php }?>
                   </a>
                 </li>
               </ul>
-            </div>
+              </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
@@ -68,15 +93,16 @@
               <h3 class="card-title">Leer Email</h3>
 
             </div>
+           
             <!-- /.card-header -->
             <div class="card-body p-0">
               <div class="mailbox-read-info">
-                <h6>Enviado por: support@adminlte.io
+                <h6>Enviado por: <?php echo $Email; ?>
 
               </div>
          
               <div class="mailbox-read-message">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique cupiditate corporis quae iure deleniti assumenda. Itaque porro deleniti aperiam ducimus iusto consectetur dignissimos, mollitia praesentium, atque, officia voluptatibus exercitationem necessitatibus.</p>
+                <p><?php echo $Mensaje; ?></p>
               </div>
               <!-- /.mailbox-read-message -->
             </div>
@@ -85,8 +111,8 @@
             <!-- /.card-footer -->
             <div class="card-footer">
           
-              <button type="button" class="btn btn-danger mr-2"><i class="far fa-trash-alt mr-2"></i> Delete</button>
-              <button type="button" class="btn btn-primary mr-2"><i class="fas fa-print mr-2"></i> Responder</button>
+              <a type="button" class="btn btn-danger mr-2" href="controlador/eliminar-correo.php?id=<?php echo $_GET['id']; ?>"><i class="far fa-trash-alt mr-2"></i> Delete</a>
+              <a type="button" class="btn btn-primary mr-2" href="responder-mensaje.php?id=<?php echo $_GET['id']; ?>"><i class="fas fa-paper-plane mr-2"></i> Responder</a>
             </div>
             <!-- /.card-footer -->
           </div>
