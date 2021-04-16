@@ -14,7 +14,7 @@ if(isset($_POST['btn-enviar'])){
             $subject = "Pregunta Recibida";
             
     
-            // Datos para el correo
+            /* Datos para el correo
             $FromEmail = "jonytello76@gmail.com";//Correo Integrado para mandar correos
             $FromName = "Jonathan Aldair";
             $host = "smtp.live.com";
@@ -43,17 +43,16 @@ if(isset($_POST['btn-enviar'])){
            
             $mail->Body = $Mensajes;
             $mail->send();
-            if(!$mail->send()){
-                echo "Mailer: No se pudo Enviar ";die();
-            }else{
-                echo "Correo Enviado";die();
+*/
+                echo "Correo Enviado";
+                die();
                 $sql = "INSERT INTO mensaje VALUES (Null,'$Email','$Mensajes','$id')";
 
                 $ejecutar = mysqli_query($conectar,$sql);
 
                 mail($FromEmail, $subject, $Mensajes);                    
                 header("Location: ../mensaje-enviado.php");
-            }
+            
                
             
 
