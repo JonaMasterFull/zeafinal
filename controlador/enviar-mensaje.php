@@ -82,10 +82,7 @@ if(isset($_POST['btn-enviar'])){
             $enviadoCliente   = mail($paraCliente, $tituloCliente, $mensajeCliente, $cabecerasCliente);
             
             
-            
-            
-                echo "Correo Enviado";
-                die();
+    
                 $sql = "INSERT INTO mensaje VALUES (Null,'$Email','$Mensajes','$id')";
 
                 $ejecutar = mysqli_query($conectar,$sql);
