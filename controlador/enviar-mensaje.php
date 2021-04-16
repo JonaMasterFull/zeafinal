@@ -1,29 +1,43 @@
 <?php 
+include("../PHPMailer/src/PHPMailer.php");
 
-
+var_dump("1111111111111111111");
+die();
 if(isset($_POST['btn-enviar'])){
 
-        $id = $_POST['id'];
-        $Email = $_POST['email'];
-        $Mensajes = $_POST['mensaje'];
-
-        // Datos para el correo
-        $destinatario = "perezaguirre414@gmail.com";
-        $asunto = "Pregunta de Cliente";
-        $MensajeCompleto = $Mensajes . "\nAtentamente: " . $Email;
-        $cabeceras = 'From: '. $Email . "\r\n" .
-        'Reply-To: webmaster@example.com' . "\r\n" .
-        'X-Mailer: PHP/' . phpversion();
-
         try{
-            
-            require_once '../database/conexion.php';
-            $sql = "INSERT INTO mensaje VALUES (Null,'$Email','$Mensajes','$id')";
+            $mail = new PHPMailer\PHPMailer\PHPMailer();
+            $mail->isSMTP();
 
-            $ejecutar = mysqli_query($conectar,$sql);
+            $mail->SMTPDebug = 0;
+            $mail->Host = $this->_host;
+            $mail->Port = $this->_port;
+            $mail->SMTPAuth =$this->_SMTPAuth;
+            $mail->SMTPSecure = $this->_SMTPSecure;
+            $mail->SMTPOptions = array(
+                'ssl' => array(
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                    'allow_self_signed' => true
+                )
+            );
 
-                mail($destinatario, $asunto, $MensajeCompleto, $cabeceras);                    
-                header("Location: ../mensaje-enviado.php");
+            $mail->Username = $this->_Username;
+            $mail->Password = $this->_Password;
+            $mail->setFrom($this->_Username, $this->_Password);
+
+            if(is_array($emailTo)){
+                foreach ($emailTo as $Key => $value){
+                    $mail->addAddress($value);
+                }
+            }else{
+                $mail->addAddress($emailTo);
+            }
+
+            $mail->isHTML(true);
+            $mail->Subject = $subject;
+
+        
         }catch(Exception $e){
             echo "Error: " . $e -> getMessage();
         }
