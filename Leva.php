@@ -77,7 +77,7 @@
                     $result = mysqli_query($conectar,$sql);
                     while ($mostrar=mysqli_fetch_array($result)) { ?>            
                 <div class="card-header">
-                    <label class="text-bold">Pregunta <?php echo $mostrar['id_pregunta'] ?>:<br><?php echo $mostrar['Nombre'] ?></label>
+                    <label class="text-bold">Preguntas:<br><?php echo $mostrar['Nombre'] ?></label>
                 </div>
                 <br>
             <div class="card-body">
