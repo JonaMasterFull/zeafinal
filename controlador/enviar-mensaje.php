@@ -31,13 +31,6 @@ if(isset($_POST['btn-enviar'])){
             $mail->SMTPAuth = $SMTPAuth;
             $mail->SMTPSecure = $SMTPSecure;
 
-            /*$mail->SMTPOptions = array(
-                'ssl' => array(
-                    'verify_peer' => false,
-                    'verify_peer_name' => false,
-                    'allow_self_signed' => true
-                )
-            );*/
 
             $mail->Username = $FromEmail;
             $mail->Password = $Password;
@@ -49,7 +42,7 @@ if(isset($_POST['btn-enviar'])){
             $mail->Subject = $subject;
            
             $mail->Body = $Mensajes;
-            
+            $mail->send();
             if(!$mail->send()){
                 echo "Mailer: No se pudo Enviar ";die();
             }else{
