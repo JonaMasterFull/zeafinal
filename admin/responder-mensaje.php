@@ -54,13 +54,9 @@
                 <li class="nav-item active">
                   <a href="listado-correos.php" class="nav-link">
                     <i class="fas fa-inbox"></i> Inbox
-                    <?php 
-                $sql="SELECT Count(Estado) as TOTAL FROM respuesta Where Estado = 2";
-                $result = mysqli_query($conectar,$sql);
-                while ($mostrar=mysqli_fetch_array($result)) {
-                ?>
-                    <span class="badge bg-danger float-right"><?php echo $mostrar['TOTAL']; ?></span>
-                <?php }?>
+       
+                    <span class="badge bg-danger float-right"></span>
+
                   </a>
                 </li>
                 <li class="nav-item">

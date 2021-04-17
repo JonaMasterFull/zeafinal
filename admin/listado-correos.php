@@ -42,13 +42,9 @@
                 <li class="nav-item active">
                   <a href="listado-correos.php" class="nav-link">
                     <i class="fas fa-inbox"></i> Inbox
-                    <?php 
-                $sql="SELECT Count(Estado) as TOTAL FROM respuesta Where Estado = Null";
-                $result = mysqli_query($conectar,$sql);
-                while ($mostrar=mysqli_fetch_array($result)) {
-                ?>
-                    <span class="badge bg-danger float-right"><?php echo $mostrar['TOTAL']; ?></span>
-                <?php }?>
+    
+                    <span class="badge bg-danger float-right"></span>
+
                   </a>
                 </li>
                 <li class="nav-item">
@@ -112,11 +108,12 @@
                     <?php
                     if($Contestado == 1){
                     ?>
-                    <a href="editar-respuesta.php?id=<?php echo $mostrar['id_mensaje']; ?>&idres=<?php echo $mostrar['id_respuesta']; ?>" class="btn btn-warning mr-2"><i class="fas fa-pen"></i></a>
-                    <?php }?>
-                    <a href="controlador/eliminar-correo.php?id=<?php echo $mostrar['id_mensaje']; ?>" class="btn btn-danger mr-2"><i class="fas fa-eraser"></i></a>
+                    <a href="editar-respuesta.php?id=<?php echo $mostrar['id_mensaje']; ?>&idres=<?php echo $mostrar['id_respuesta']; ?>" class="btn btn-warning mr-2 mb-2"><i class="fas fa-pen"></i></a>
                     
+                    <a href="controlador/eliminar-correo.php?id=<?php echo $mostrar['id_mensaje']; ?>" class="btn btn-danger mr-2"><i class="fas fa-eraser"></i></a>
+                    <?php }?>
                     </td>
+                    
                   </tr>
                   
                   

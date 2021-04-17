@@ -19,8 +19,9 @@
         <div class="actions">
             <a class="btn btn-cta btn-primary" href="#" data-bs-toggle="modal" data-bs-target="#signup-modal">TM</a>  
             <br class="d-sm-inline-block d-md-none">
-            <a href="section-wrapper" class="video-play-trigger" data-bs-toggle="modal" data-bs-target="#modal-video" >
+            <a href="#section-wrapper" class="video-play-trigger" data-bs-toggle="modal" data-bs-target="#modal-video" >
             <img class="play-icon" src="assets/images/play-icon.svg" alt="">Ver mas</a>
+
         </div>
     </div><!--//container-->
 </section><!--//promo-section-->

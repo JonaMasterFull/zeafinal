@@ -1419,9 +1419,10 @@ textarea {
 .quote-item .source {
   font-size: 14px;
   margin-top: 30px;
+  color: chocolate;
 }
 .quote-item .source .title {
-  color: #7d828d;
+  color: darkred;
 }
 .quote-item .profile {
   position: absolute;

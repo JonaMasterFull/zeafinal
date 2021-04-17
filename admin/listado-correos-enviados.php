@@ -42,20 +42,16 @@
                 <li class="nav-item active">
                   <a href="listado-correos.php" class="nav-link">
                     <i class="fas fa-inbox"></i> Inbox
-                    <?php 
-                $sql="SELECT Count(Estado) as TOTAL FROM respuesta Where Estado = 'No contestado';";
-                $result = mysqli_query($conectar,$sql);
-                while ($mostrar=mysqli_fetch_array($result)) {
-                ?>
-                    <span class="badge bg-danger float-right"><?php echo $mostrar['TOTAL']; ?></span>
-                <?php }?>
+                   
+                    <span class="badge bg-danger float-right"></span>
+                
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="listado-correos-enviados.php" class="nav-link">
                     <i class="far fa-envelope"></i> Enviados
                     <?php 
-                $sql="SELECT Count(Estado) as TOTAL FROM respuesta Where Estado = 'Contestado';";
+                $sql="SELECT Count(Estado) as TOTAL FROM respuesta Where Estado = 1;";
                 $result = mysqli_query($conectar,$sql);
                 while ($mostrar=mysqli_fetch_array($result)) {
                 ?>
@@ -90,7 +86,6 @@
                   <tbody>
                   <tr>
                   <?php 
-
                   if($Contestado == 1){
                   ?>
                   <td><span class="badge bg-success">Contestado</span></td>
@@ -102,7 +97,7 @@
                     <td class="mailbox-name"><a href="ver-mensaje.php?id=<?php echo $mostrar['id_mensaje']; ?>"><?php echo $mostrar['Mensaje'] ?></a></td>
                     
                     <td>
-                    <a href="editar-respuesta.php?id=<?php echo $mostrar['id_mensaje']; ?>" class="btn btn-warning mr-2"><i class="fas fa-pen"></i></a>
+                    <a href="editar-respuesta.php?id=<?php echo $mostrar['id_mensaje']; ?>&idres=<?php echo $mostrar['id_respuesta']; ?>" class="btn btn-warning mr-2"><i class="fas fa-pen"></i></a>
                     <a href="controlador/eliminar-correo.php?id=<?php echo $mostrar['id_mensaje']; ?>" class="btn btn-danger mr-2"><i class="fas fa-eraser"></i></a>
                     
                     </td>

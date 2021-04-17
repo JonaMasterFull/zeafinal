@@ -58,13 +58,9 @@
                 <li class="nav-item active">
                   <a href="listado-correos.php" class="nav-link">
                     <i class="fas fa-inbox"></i> Inbox
-                    <?php 
-                $sql="SELECT Count(Estado) as TOTAL FROM respuesta Where Estado = 2";
-                $result = mysqli_query($conectar,$sql);
-                while ($mostrar=mysqli_fetch_array($result)) {
-                ?>
-                    <span class="badge bg-danger float-right"><?php echo $mostrar['TOTAL']; ?></span>
-                <?php }?>
+
+                    <span class="badge bg-danger float-right"></span>
+
                   </a>
                 </li>
                 <li class="nav-item">
@@ -94,7 +90,7 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-              <form action="controlador/editar-respuesta.php" method="post">
+              <form action="controlador/editar-respuesta.php?idres=<?php echo $_GET['idres']; ?>" method="post">
                 <input type="hidden" name="mensaje" value="<?php echo $Idmensaje;?>">
                 <div class="form-group">
                   <select class="form-control" name="status">
@@ -112,7 +108,7 @@
                     <textarea id="compose-textarea" class="form-control" name="respuesta" style="height: 300px"><?php echo $Respuesta; ?></textarea>
                 </div>
                 <div class="float-right">
-                  <button type="submit" class="btn btn-primary" name="btn-enviar"><i class="far fa-envelope"></i> Enviar</button>
+                  <button type="submit" class="btn btn-primary" name="update"><i class="far fa-envelope"></i> Enviar</button>
                 </div>
                 <a type="reset" class="btn btn-default" href="listado-correos.php"><i class="fas fa-times mr-2"></i> Descartar</a>
               </form>

@@ -34,7 +34,7 @@ if(isset($_POST['btn-enviar'])){
             $mail­->Subject = "Mensaje Prueba";
             $mail­->MsgHTML($ContenidoMensaje);
 
-            $address = "Karen.garcia@thinkingmachinecenter.com";//Correo A enviar
+            $address = "pnuevas466@gmail.com";//Correo A enviar
 
 
             $mail­->AddAddress($address, "Mensaje Prueba");

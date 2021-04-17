@@ -19,7 +19,7 @@ if(isset($_POST['btn-enviar'])){
                 header("Location: ../listado-correos.php");
 
             }else{
-                header("Location: ../listado-mensaje.php");
+                header("Location: ../listado-correos.php");
 
             }
         }catch(Exception $e){

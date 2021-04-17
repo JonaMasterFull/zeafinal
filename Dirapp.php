@@ -70,14 +70,15 @@
             <br>
             <h1>Preguntas Frecuentes de DirApp</h1>
             <br>
-            <div class="card">
             <?php  
         
                 $sql = "SELECT id_pregunta,preguntas.Nombre,proyectos.Nombre as Proyecto FROM preguntas INNER JOIN proyectos on preguntas.id_proyecto = proyectos.id_proyecto WHERE proyectos.Nombre = 'DiRApp'";
                 $result = mysqli_query($conectar,$sql);
-                while ($mostrar=mysqli_fetch_array($result)) { ?>            
+                while ($mostrar=mysqli_fetch_array($result)) { ?> 
+            <div class="card">
+                       
             <div class="card-header">
-                <label class="text-bold">Preguntas:<br><?php echo $mostrar['Nombre'] ?></label>
+                <h1 class="text-bold">Preguntas:<br><?php echo $mostrar['Nombre'] ?></h1>
             </div>
             <br>
         <div class="card-body">
@@ -95,8 +96,10 @@
                     <br>
                     <button class="btn btn-primary col-12" name="btn-enviar">Enviar</button>
                 </form>
+                </div>
+            </div>
+            <br>
             <?php } ?>
-</div>
         </div><!--//section-intro-->
     </section>
 

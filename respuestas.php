@@ -1,96 +1,75 @@
 <?php 
     include_once 'templates/header.php';
+    require_once 'database/conexion.php';
 ?>
 
 <div class="stories container" >
-    
+
     <div id="story-block-1" class="story-block story-block-1">
+
+                
+                    <div class="row">
+                            <form action="respuestas.php" method="post">
+                            <div class="col-12 col-md-12">                    
+                                <input type="text" class="form-control"  placeholder="Buscar" name="buscar" id="buscar"/>
+                            </div>            
+                            <br>
+                            <div class="col-12 col-md-3">
+                                <button type="submit" class="btn btn-light form-control"> Buscar</button>
+                            </div>
+                            </form>                             
+                    </div>
+               
         <h2 class="section-title">
                 Estas son las respuestas a nuestros usuarios
         </h2>
         
         <div class="quotes">
             <div class="row">
+            <?php 
+            if(!isset($_POST['buscar'])){
+                $_POST['buscar'] = "";
+                $Buscar = $_POST['buscar'];
+
+              }
+              $Buscar = $_POST['buscar'];
+               
+              $sql = "SELECT mensaje.id_mensaje,respuesta.id_respuesta,mensaje.Mensaje as recibido,respuesta.Mensaje,preguntas.Nombre as preguntas, proyectos.Nombre as proyectos FROM mensaje LEFT jOIN respuesta on mensaje.id_mensaje = respuesta.id_mensaje Inner Join preguntas on mensaje.id_pregunta = preguntas.id_pregunta Inner Join proyectos on preguntas.id_proyecto = proyectos.id_proyecto
+              where preguntas.Nombre LIKE '%".$Buscar."%' And respuesta.Estado = 1;";
+
+                    $result = mysqli_query($conectar,$sql);
+                            while ($mostrar=mysqli_fetch_array($result)) {
+                            ?>
                 <div class="quote-item col-12 col-md-6 text-center">
+                
                     <div class="inner">
                         <div class="profile">
                             <img src="assets/images/stories/profiles/profile-1.png" alt="">
                         </div><!--//profile-->
-                        
+                       
                         <i class="fas fa-quote-left" aria-hidden="true"></i>
                         <blockquote class="quote">
-                            respuesta
+                            Duda: <p><?php echo $mostrar['recibido']; ?></p>
                         </blockquote><!--//blockquote-->
-                        <div class="source">
-                            <div class="name">Pertetenece</div>
-                            <div class="title">Pregunta a Responder</div>
-                        </div><!--//source-->
-
-                    </div><!--//inner-->
-                </div><!--//quote-item-->
-                <div class="quote-item col-12 col-md-6 text-center">
-                    <div class="inner">
-                        <div class="profile">
-                            <img src="assets/images/stories/profiles/profile-2.png" alt="">
-                        </div><!--//profile-->
-                        
-                        <i class="fas fa-quote-left" aria-hidden="true"></i>
+                        <br>
                         <blockquote class="quote">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus...
+                            Respuesta: <?php echo $mostrar['Mensaje']; ?>
                         </blockquote><!--//blockquote-->
                         <div class="source">
-                            <div class="name">Doris Reyes</div>
-                            <div class="title">Lead Developer, Agency Ipsum</div>
+                            <div class="name"><?php echo $mostrar['preguntas'];?></div>
+                            <div class="title"><?php echo $mostrar['proyectos'] ?></div>
                         </div><!--//source-->
-
+                       
                     </div><!--//inner-->
+                   
                 </div><!--//quote-item-->
-                
+                <?php }?>
+            
             </div><!--//row-->
         </div><!--//quotes-->   
     </div><!--//story-block-->
-    
 
-        
-        <div class="quotes">
-            <div class="row">
-                <div class="quote-item col-12 col-md-6 text-center">
-                    <div class="inner">
-                        <div class="profile">
-                            <img src="assets/images/stories/profiles/profile-4.png" alt="">
-                        </div><!--//profile-->
-
-                        <i class="fas fa-quote-left" aria-hidden="true"></i>  
-                        <blockquote class="quote">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                        </blockquote><!--//blockquote-->
-                        <div class="source">
-                            <div class="name">Robert Jensen</div>
-                            <div class="title">UX Designer, Startup Lorem</div>
-                        </div><!--//source-->
-
-                    </div><!--//inner-->
-                </div><!--//quote-item-->
-                <div class="quote-item col-12 col-md-6 text-center">
-                    <div class="inner">
-                        <div class="profile">
-                            <img src="assets/images/stories/profiles/profile-3.png" alt="">
-                        </div><!--//profile-->
-                        
-                        <i class="fas fa-quote-left" aria-hidden="true"></i>
-                        <blockquote class="quote">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                        </blockquote><!--//blockquote-->
-                        <div class="source">
-                            <div class="name">Carl McCoy</div>
-                            <div class="title">Developer, Startup Ipsum</div>
-                        </div><!--//source-->
-
-                    </div><!--//inner-->
-                </div><!--//quote-item-->
-            </div><!--//row-->
-        </div><!--//quotes-->  
-    </div><!--//story-block-->
+</div>
 
 
 <?php 

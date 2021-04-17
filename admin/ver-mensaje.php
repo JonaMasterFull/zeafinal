@@ -57,20 +57,16 @@
                 <li class="nav-item active">
                   <a href="listado-correos.php" class="nav-link">
                     <i class="fas fa-inbox"></i> Inbox
-                    <?php 
-                $sql="SELECT Count(Estado) as TOTAL FROM respuesta Where Estado = 'No contestado';";
-                $result = mysqli_query($conectar,$sql);
-                while ($mostrar=mysqli_fetch_array($result)) {
-                ?>
-                    <span class="badge bg-danger float-right"><?php echo $mostrar['TOTAL']; ?></span>
-                <?php }?>
+               
+                    <span class="badge bg-danger float-right"></span>
+
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="listado-correos-enviados.php" class="nav-link">
                     <i class="far fa-envelope"></i> Enviados
                     <?php 
-                $sql="SELECT Count(Estado) as TOTAL FROM respuesta Where Estado = 'Contestado';";
+                $sql="SELECT Count(Estado) as TOTAL FROM respuesta Where Estado = 1;";
                 $result = mysqli_query($conectar,$sql);
                 while ($mostrar=mysqli_fetch_array($result)) {
                 ?>
@@ -100,10 +96,23 @@
                 <h6>Enviado por: <?php echo $Email; ?>
 
               </div>
-         
               <div class="mailbox-read-message">
-                <p><?php echo $Mensaje; ?></p>
+              <label class="h4">Mensaje Recibido:</label><p><?php echo $Mensaje; ?></p>
               </div>
+              <?php 
+                   $sql2="SELECT * FROM preguntas";
+                   $result2 = mysqli_query($conectar,$sql2);
+                   while ($mostrar2=mysqli_fetch_array($result2)) {
+                    $PreguntaS = $mostrar2['id_pregunta'];
+                    if($PreguntaS == $Pregunta){  
+              ?>
+              <div class="mailbox-read-message">
+                <label class="h4">Pregunta Consultada:</label> <p><?php echo $mostrar2['Nombre']; ?></p>
+              </div>
+              <?php
+              } 
+            } 
+            ?>
               <!-- /.mailbox-read-message -->
             </div>
             <!-- /.card-body -->
@@ -111,7 +120,7 @@
             <!-- /.card-footer -->
             <div class="card-footer">
           
-              <a type="button" class="btn btn-danger mr-2" href="controlador/eliminar-correo.php?id=<?php echo $_GET['id']; ?>"><i class="far fa-trash-alt mr-2"></i> Delete</a>
+              <a type="button" class="btn btn-danger mr-2" href="controlador/eliminar-mensaje.php?id=<?php echo $_GET['id']; ?>"><i class="far fa-trash-alt mr-2"></i> Delete</a>
               <a type="button" class="btn btn-primary mr-2" href="responder-mensaje.php?id=<?php echo $_GET['id']; ?>"><i class="fas fa-paper-plane mr-2"></i> Responder</a>
             </div>
             <!-- /.card-footer -->

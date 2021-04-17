@@ -71,14 +71,15 @@
             <h1>Preguntas Frecuentes de DirZoo</h1>
             <br>
             <br>
-                <div class="card">
-                <?php  
+            <?php  
                     
                     $sql = "SELECT id_pregunta,preguntas.Nombre,proyectos.Nombre as Proyecto FROM preguntas INNER JOIN proyectos on preguntas.id_proyecto = proyectos.id_proyecto WHERE proyectos.Nombre = 'DiRZOO'";
                     $result = mysqli_query($conectar,$sql);
-                    while ($mostrar=mysqli_fetch_array($result)) { ?>            
+                    while ($mostrar=mysqli_fetch_array($result)) { ?> 
+                <div class="card">
+                     
                 <div class="card-header">
-                    <label class="text-bold">Preguntas:<br><?php echo $mostrar['Nombre'] ?></label>
+                    <h1 class="text-bold"><?php echo $mostrar['Nombre'] ?></h1>
                 </div>
                 <br>
             <div class="card-body">
@@ -96,8 +97,10 @@
                         <br>
                         <button class="btn btn-primary col-12" name="btn-enviar">Enviar</button>
                     </form>
-                <?php } ?>
+                </div>
             </div>
+            <br>
+            <?php } ?>
         </div><!--//section-intro-->
     </section>
 
