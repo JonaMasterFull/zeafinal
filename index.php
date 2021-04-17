@@ -17,10 +17,7 @@
         <h2 class="headline">Bienvenido a TM<br>todas nuestras apps a tu alcance</h2>
         <p class="tagline">Todas tus dudas a nuestro alcance.</p>
         <div class="actions">
-            <a class="btn btn-cta btn-primary" href="#" data-bs-toggle="modal" data-bs-target="#signup-modal">TM</a>  
-            <br class="d-sm-inline-block d-md-none">
-            <a href="#section-wrapper" class="video-play-trigger" data-bs-toggle="modal" data-bs-target="#modal-video" >
-            <img class="play-icon" src="assets/images/play-icon.svg" alt="">Ver mas</a>
+            
 
         </div>
     </div><!--//container-->
